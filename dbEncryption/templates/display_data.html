@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Health Data Display</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .container {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 800px;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+      .health-record {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      .add-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        text-decoration: none;
+        margin-right: 10px;
+      }
+      .health-record h2 {
+        margin-bottom: 5px;
+      }
+      .health-record p {
+        margin: 5px 0;
+      }
+      .action-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        text-decoration: none;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Health Data Records</h1>
+      {% for record in health_records %}
+      <div class="health-record">
+        <h2>User ID: {{ record['user_id'] }}</h2>
+        <p>Age: {{ record['age'] }}</p>
+        <p>Sex: {{ record['sex'] }}</p>
+        <p>Height: {{ record['height'] }}</p>
+        <p>Weight: {{ record['weight'] }}</p>
+        <p>Diagnosis: {{ record['diagnosis'] }}</p>
+        <p>Medications: {{ record['medications'] }}</p>
+        <p>Allergies: {{ record['allergies'] }}</p>
+        <p>Past Surgeries: {{ record['past_surgeries'] }}</p>
+        <p>Family History: {{ record['family_history'] }}</p>
+        <p>Blood Group: {{ record['blood_group'] }}</p>
+      </div>
+      {% endfor %}
+
+      <a href="{{ url_for('index') }}" class="add-button"
+        >Add Another Information</a
+      >
+      <a href="{{ url_for('encrypt_and_send') }}" class="action-button"
+        >Encrypt and Send Database</a
+      >
+    </div>
+  </body>
+</html>
